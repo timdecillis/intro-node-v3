@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 // import './src/commands.js'
+const arg = process.argv.slice(2).join(' ');
 
-function assess () {
-  const args = process.argv.slice(2)[0];
-  if (args === "foo") {
-   return console.log(args);
+function greet (greeting) {
+  if (greeting === 'hello') {
+   return 'hello yourself';
   }
-  return console.log("bar");
+  if (greeting === 'bye') {
+    return 'byeeee'
+  }
+  return 'huh???';
 };
 
-assess();
+console.log(greet(arg));
