@@ -11,6 +11,3 @@ function greet (greeting) {
   }
   return 'huh???';
 };
-
-console.log(greet(arg));
-
