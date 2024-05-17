@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 // import './src/commands.js'
-console.log('hello world')
+const args = process.argv.slice(2);
+console.log(args)
