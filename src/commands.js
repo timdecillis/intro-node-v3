@@ -20,7 +20,7 @@ yargs(hideBin(process.argv))
     type: 'string',
     description: 'tags to add to the note'
   })
-  .command('all', 'get all notes', () => {}, async (argv) => {
+  .command('all', 'get all notes', () => {}, async () => {
     const notes = await getAllNotes()
     listNotes(notes)
   })
