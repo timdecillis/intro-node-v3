@@ -38,10 +38,10 @@ yargs(hideBin(process.argv))
       type: 'number',
       description: 'The id of the note you want to remove'
     })
-  }, async (argv) => {
-    const id = await removeNote(argv.id)
-    if (id) {
-      console.log('Note removed: ', id)
+  }, async ({id}) => {
+    const id1 = await removeNote(id)
+    if (id1) {
+      console.log('Note removed: ', id1)
     } else {
       console.log('Note not found')
     }
