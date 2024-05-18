@@ -20,7 +20,7 @@ yargs(hideBin(process.argv))
     type: 'string',
     description: 'tags to add to the note'
   })
-  .command('all', 'get all notes', () => {}, async (argv) => {
+  .command('all', 'get all notes', () => {}, async () => {
     const notes = await getAllNotes()
     listNotes(notes)
   })
@@ -29,8 +29,8 @@ yargs(hideBin(process.argv))
       describe: 'The search term to filter notes by, will be applied to note.content',
       type: 'string'
     })
-  }, async (argv) => {
-    const notes = await findNotes(argv.filter)
+  }, async ({filter}) => {
+    const notes = await findNotes(filter)
     listNotes(notes)
   })
   .command('remove <id>', 'remove a note by id', yargs => {
@@ -38,10 +38,10 @@ yargs(hideBin(process.argv))
       type: 'number',
       description: 'The id of the note you want to remove'
     })
-  }, async (argv) => {
-    const id = await removeNote(argv.id)
-    if (id) {
-      console.log('Note removed: ', id)
+  }, async ({id}) => {
+    const id1 = await removeNote(id)
+    if (id1) {
+      console.log('Note removed: ', id1)
     } else {
       console.log('Note not found')
     }
@@ -53,11 +53,11 @@ yargs(hideBin(process.argv))
         default: 5000,
         type: 'number'
       })
-  }, async (argv) => {
+  }, async ({port}) => {
     const notes = await getAllNotes()
-    start(notes, argv.port)
+    start(notes, port)
   })
-  .command('clean', 'remove all notes', () => {}, async (argv) => {
+  .command('clean', 'remove all notes', () => {}, async () => {
     await removeAllNotes()
     console.log('All notes removed')
   })
