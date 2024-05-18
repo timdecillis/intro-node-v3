@@ -53,9 +53,9 @@ yargs(hideBin(process.argv))
         default: 5000,
         type: 'number'
       })
-  }, async (argv) => {
+  }, async ({port}) => {
     const notes = await getAllNotes()
-    start(notes, argv.port)
+    start(notes, port)
   })
   .command('clean', 'remove all notes', () => {}, async (argv) => {
     await removeAllNotes()
