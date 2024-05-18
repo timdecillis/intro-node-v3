@@ -29,8 +29,8 @@ yargs(hideBin(process.argv))
       describe: 'The search term to filter notes by, will be applied to note.content',
       type: 'string'
     })
-  }, async (argv) => {
-    const notes = await findNotes(argv.filter)
+  }, async ({filter}) => {
+    const notes = await findNotes(filter)
     listNotes(notes)
   })
   .command('remove <id>', 'remove a note by id', yargs => {
